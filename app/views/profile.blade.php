@@ -3,13 +3,13 @@
 @include('master')
 <head>
 	<meta charset="UTF-8">
-	<title>Login Prueba</title>
+	<title>Perfiles</title>
 	@yield('estilos')
-</form>
 
 </head>
 <body>
-@yield('sidebar')
+@yield('sidebaruser')
+
 
 
 </body>

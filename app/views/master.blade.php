@@ -5,18 +5,18 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="/">
                         Panda Bar
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="/seeuser">Añadir Perfil</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="/seeprofile">Perfiles</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="/seepicture">Overview</a>
                 </li>
                 <li>
                     <a href="#">Events</a>
@@ -42,7 +42,7 @@
                         <h1>Barra Simple</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                         <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
                     </div>
                 </div>
 
@@ -94,9 +94,7 @@
 													<div class="form-group">
 														<input type="password" name="password" id="password2" tabindex="2" class="form-control" placeholder="Password">
 													</div>
-													<div class="form-group">
-														<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-													</div>
+													
 													<div class="form-group">
 														<div class="row">
 															<div class="col-sm-6 col-sm-offset-3">
@@ -117,11 +115,15 @@
 
 					<button onclick="search()" class="btn btn-info">Usuarios</button>
 					</div>
+
+
 					
 					<div id='place'align='center'>
 					
 
 					</div>
+
+			
 	</div>
 
 
@@ -141,9 +143,9 @@
 						
                            <td><input type="hidden"  id="iddd"></td>
                            <td>Usuario</td>
-                           <td><input  id="changeduser" ></td>
+                           <td><input type="text"  id="changeduser" ></td>
                            <td>Contraseña</td>
-                           <td><input  id="changedpass"></td>
+                           <td><input type="text"  id="changedpass"></td>
                         </tr>
 		</table>
       </div>
@@ -169,6 +171,7 @@
 @stop
 
 @section('estilos')
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/css/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/css/sidebar.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css"/>
@@ -183,3 +186,245 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js"></script>
 @stop
+
+
+
+@section('sidebarsimple')
+<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Panda Bar
+                    </a>
+                </li>
+                <li>
+                    <a href="/seeuser">Añadir Perfil</a>
+                </li>
+                <li>
+                    <a href="/seeprofile">Perfiles</a>
+                </li>
+                <li>
+                    <a href="/seepicture">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Ingresar Perfil</h1>
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-lg-12">
+                        <h1>Datos</h1>
+
+                        
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            
+            <div align="center" class="form">
+                
+                {{ Form::open(array('url' => '/registerall', 'files' => true)) }}
+
+                {{ Form::label('photo','Foto') }}
+                
+                <!--así se crea un campo file en laravel-->
+                {{ Form::file('photo')}}
+                <br>
+                {{ Form::label('username', 'Username') }}
+
+                {{ Form::text('username', Input::old('username')) }}
+                <br>
+
+                {{ Form::label('password', 'Password') }}
+
+                {{ Form::password('password') }}
+
+                
+                <br />
+                {{ Form::submit('Regístrarme', array("class" => "button expand round btn btn-info")) }}
+
+                {{ Form::close() }}
+
+            </div>   
+        
+        </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                    <div id="imagePreview">
+                    
+                    </div>
+            </div>
+
+            
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+@stop
+
+
+@section('sidebaruser')
+<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Panda Bar
+                    </a>
+                </li>
+                <li>
+                    <a href="/seeuser">Añadir Perfil</a>
+                </li>
+                <li>
+                    <a href="/seeprofile">Perfiles</a>
+                </li>
+                <li>
+                    <a href="/seepicture">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Perfiles de Usuarios</h1>
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-lg-12">
+                        <h1>Datos</h1>
+                        <div align="center">
+
+	                    <button onclick="charge()" class="btn btn-info">Ver Perfiles</button>
+	                </div>
+	
+	                <div id='pla'align='center'>
+	
+
+                    </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+@stop
+
+
+@section('sidevision')
+<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Panda Bar
+                    </a>
+                </li>
+                <li>
+                    <a href="/seeuser">Añadir Perfil</a>
+                </li>
+                <li>
+                    <a href="/seeprofile">Perfiles</a>
+                </li>
+                <li>
+                    <a href="/seepicture">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Perfiles de Usuarios</h1>
+                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                    </div>
+                </div>
+				<div class="row">
+                    <div class="col-lg-12">
+                        <h1>Datos</h1>
+                        <div align="left">
+
+	                    <button onclick="chargenew()" class="btn btn-info">Ver Datos</button>
+	                </div>
+	
+	                <div id='pic'align='center'>
+	
+
+                    </div>
+                        
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+@stop
+

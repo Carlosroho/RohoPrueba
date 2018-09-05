@@ -47,18 +47,26 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	}
 
-	//	$validator = Validator::make(
-	//	array(
-	//		'name' => 'Dayle',
-	//		'password' => 'lamepassword',
-	//		'email' => 'email@example.com'
-	//	),
-	//	array(
-	//		'name' => 'required',
-	//		'password' => 'required|min:8',
-	//		'email' => 'required|email|unique:users'
-	//	)
-//	);
+	public function validatetwo($input){
 
+
+		
+		$rules = array(
+			'username' => 'required|unique:user,username|min:4',
+			'password' => 'required|min:4',
+			'photo' => 'required|unique:user,photo'
+		);
+
+		$messages = array('required'=>'El :attribute es obligatorio',
+		'min'=>'El :attribute debe contener almenos 4 caracteres',
+		'unique'=>'El :attribute ya existe'
+		);
+
+		$validator = Validator::make($input,$rules,$messages);
+
+		return $validator;
+
+
+	}
 
 }

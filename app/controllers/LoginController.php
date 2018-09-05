@@ -46,6 +46,7 @@ class LoginController extends BaseController {
 	{
         try
         {
+
             $user = new User();
 
            
@@ -186,5 +187,123 @@ class LoginController extends BaseController {
             return array('error'=> true,'message' => 'Hubo un error al modificar los datos del usuario', 'data'=>$e->getMessage());
        }
     }
+
+
+
+
+    public function registerall()
+	{
+        try
+        {
+
+        $user = new User();
+
+           
+        $input = Input::all();
+
+         $validator = $user->validatetwo($input);
+
+
+
+         //var_dump($validator);
+
+
+
+         if ($validator->passes())
+        {
+                
+                $file = Input::file("photo");
+
+                $username = Input::get("username");
+                $password = Input::get("password");
+               // $password = Hash::make($password);
+                $user->username = $username;
+                $user->password = $password;
+                $user->photo = Input::file("photo")->getClientOriginalName();//nombre original de la foto
+
+                $user-> save();
+
+                $file->move("public/img",$file->getClientOriginalName());
+
+                return Redirect::to('/seeprofile');
+
+            }
+
+        else{
+           $men = $validator->errors();
+           
+        
+
+            return array('error'=> false,'message' => 'Error al validar los datos', 'data'=>$men);
+
+            }
+
+      
+
+        }
+        catch(Exception $e){
+             return array('error'=> true,'message' => 'Hubo un error al insertar usuario', 'data'=>$e->getMessage());
+        }
+       
+    }
+
+    public function charge()
+	{
+        try
+        {
+
+
+        $users = DB::table('user')->get();
+
+        return array('error'=> false,'message' => 'Datos Recuperados Exitosamente', 'data'=> $users);
+        }
+
+
+        catch(Exception $e){
+            return array('error'=> true,'message' => 'Hubo un error al obtener datos usuario', 'data'=>$e->getMessage());
+       }
+      //  foreach ($users as $user)
+      //  {
+      //      var_dump($user->user_id,$user->username, $user->password);
+      //  }
+      
+        
+    }
+
+
+
+
+    public function updateimg(){
+        try
+        {
+
+       
+
+            $user_id = Input::get("id_picture");
+            
+            $file = Input::file("newpicture");
+
+            
+            
+         
+
+         $up= DB::table('user')
+            ->where('user_id', $user_id)
+            ->update(array('photo' => Input::file("newpicture")->getClientOriginalName()));
+
+            $file->move("public/img",$file->getClientOriginalName());
+           
+                    return var_dump($file);
+               //  return Redirect::to('/seeprofile');
+        }
+
+
+        catch(Exception $e){
+            return array('error'=> true,'message' => 'Hubo un error al cambiar la imagen los datos del usuario', 'data'=>$e->getMessage());
+       }
+    }
+
+
+
 
 }
