@@ -39,10 +39,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Barra Simple</h1>
+                        <h1>Inicio</h1>
                         <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                        <p>Make sure to keep all page content within the .</p>
+                        <a href="#menu-toggle" class="btn btn-danger" id="menu-toggle">Menu</a>
                     </div>
                 </div>
 
@@ -50,8 +50,8 @@
 					<div class="col-lg-12">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-6 col-md-offset-3">
-								<div class="panel panel-login">
+							<div class=" col-md-6 col-md-offset-3">
+								<div class=" formulario panel panel-login">
 									<div class="panel-heading">
 										<div class="row">
 											<div class="col-xs-6">
@@ -63,7 +63,7 @@
 										</div>
 										<hr>
 									</div>
-									<div class="panel-body">
+									<div class="formulario panel-body">
 										<div class="row">
 											<div class="col-lg-12">
 												<form id="login-form" role="form" style="display: block;">
@@ -74,14 +74,11 @@
 													<div class="form-group">
 														<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
 													</div>
-													<div class="form-group text-center">
-														<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-														<label for="remember"> Como el Gansito: Recuerdame</label>
-													</div>
+													
 													<div class="form-group">
 														<div class="row">
 															<div class="col-sm-6 col-sm-offset-3">
-																<input type="submit" onclick="check()" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-primary" value="Ingresar">
+																<input type="submit" onclick="check()" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-warning" value="Ingresar">
 															</div>
 														</div>
 													</div>
@@ -98,7 +95,7 @@
 													<div class="form-group">
 														<div class="row">
 															<div class="col-sm-6 col-sm-offset-3">
-																<input type="submit" onclick="add()" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-primary" value="Registrate Ahora">
+																<input type="submit" onclick="add()" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-warning" value="Registrate Ahora">
 															</div>
 														</div>
 													</div>
@@ -113,7 +110,7 @@
 
 					<div align="center">
 
-					<button onclick="search()" class="btn btn-info">Usuarios</button>
+					<button onclick="search()" class="btn btn-warning">Usuarios</button>
 					</div>
 
 
@@ -150,7 +147,7 @@
 		</table>
       </div>
       <div class="modal-footer">
-        <button type="button" onclick="updateUser()" class="btn btn-default" data-dismiss="modal">Guardar</button>
+        <button type="button" onclick="updateUser()" class="btn btn-warning" data-dismiss="modal">Guardar</button>
       </div>
     </div>
 
@@ -231,7 +228,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>Ingresar Perfil</h1>
-                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                        <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Menu</a>
                     </div>
                 </div>
 				<div class="row">
@@ -261,7 +258,7 @@
 
                 
                 <br />
-                {{ Form::submit('Regístrarme', array("class" => "button expand round btn btn-info")) }}
+                {{ Form::submit('Regístrarme', array("class" => "button expand round btn btn-warning")) }}
 
                 {{ Form::close() }}
 
@@ -331,7 +328,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>Perfiles de Usuarios</h1>
-                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                        <a href="#menu-toggle" class="btn btn-danger" id="menu-toggle">Menu</a>
                     </div>
                 </div>
 				<div class="row">
@@ -339,7 +336,7 @@
                         <h1>Datos</h1>
                         <div align="center">
 
-	                    <button onclick="charge()" class="btn btn-info">Ver Perfiles</button>
+	                    <button onclick="charge()" class="btn btn-warning">Ver Perfiles</button>
 	                </div>
 	
 	                <div id='pla'align='center'>
@@ -397,30 +394,40 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
+
             <div class="container-fluid">
+               
                 <div class="row">
                     <div class="col-lg-12">
                         <h1>Perfiles de Usuarios</h1>
-                        <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Menu</a>
+                        <a href="#menu-toggle" class="btn btn-danger" id="menu-toggle">Menu</a>
                     </div>
                 </div>
+
 				<div class="row">
                     <div class="col-lg-12">
                         <h1>Datos</h1>
                         <div align="left">
 
-	                    <button onclick="chargenew()" class="btn btn-info">Ver Datos</button>
-	                </div>
-	
-	                <div id='pic'align='center'>
-	
-
-                    </div>
-                        
+	                        <button onclick="chargenew()" class="btn btn-warning">Ver Datos</button>
+                            <button onclick="orderer()" class="btn btn-warning">Ver Datos ordenados</button>
+	                    </div>                        
                     </div>
                 </div>
-            </div>
-            </div>
+
+                <div class="row" id= "content">
+
+
+                </div> 
+
+                <div class="row" id='pic'>
+
+                </div>      
+
+           
+
+            </div> <!-- contenedor -->
+
         </div>
         <!-- /#page-content-wrapper -->
 

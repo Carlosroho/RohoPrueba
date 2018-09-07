@@ -54,7 +54,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$rules = array(
 			'username' => 'required|unique:user,username|min:4',
 			'password' => 'required|min:4',
-			'photo' => 'required|unique:user,photo'
+			'photo' => 'required|unique:user,photo|image|max:1024'
 		);
 
 		$messages = array('required'=>'El :attribute es obligatorio',

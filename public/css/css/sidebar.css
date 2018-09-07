@@ -117,8 +117,45 @@
 }
 
 img{
-    width: 300px; 
-    height: 300px;
-  
-   
+ width: 200px;
+ height: 200px;
+
+
   }
+  img:hover {
+      filter: sepia(60%);
+      transition:0.5s;
+    }
+
+body{
+
+  
+background: rgba(19,41,205,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(19,41,205,1)), color-stop(100%, rgba(1,93,213,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: radial-gradient(ellipse at center, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1329cd', endColorstr='#015dd5', GradientType=1 );
+
+    
+}
+h1,h2,h3,h4,p,td,tr,th{
+    color: white;
+}
+.btn{
+    background: #000;
+}
+
+.formulario{
+    background: rgba(19,41,205,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(19,41,205,1)), color-stop(100%, rgba(1,93,213,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+background: radial-gradient(ellipse at center, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1329cd', endColorstr='#015dd5', GradientType=1 );
+    
+}

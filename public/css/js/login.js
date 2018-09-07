@@ -68,6 +68,7 @@ function add() {
             // passwordconfirm: $('#confirm-password').val()
          },
          success: function(data) {
+          
            
             $.jGrowl(data.message);
            
@@ -80,7 +81,7 @@ function add() {
      event.preventDefault();
      $('#mytable').remove();
 
-        var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive table-hover" align="center" id="mytable"><tr><th><h4 align="center">Tabla De Usuarios</h4></th></tr><tr><th>Perfil</th><th>Id</th><th>Usuario</th><th>Contraseña</th><th>Acción</th></tr></table>';
+        var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive " align="center" id="mytable"><tr><th><h4 align="center">Tabla De Usuarios</h4></th></tr><tr><th>Perfil</th><th>Id</th><th>Usuario</th><th>Contraseña</th><th>Acción</th></tr></table>';
         $('#place').html(tabla);
      
      //$('#mytable').DataTable().clear();
@@ -197,7 +198,7 @@ $(function(){$("input[name='photo']").on("change", function(){
     event.preventDefault();
     $('#mytab').remove();
 
-       var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive table-hover" align="center" id="mytab"><tr><th><h4 align="center">Perfiles</h4></th></tr><tr><th>Photo</th><th>Clave</th><th>Nombre</th><th>Modificar Imagen</th></tr></table>';
+       var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive" align="center" id="mytab"><tr><th><h4 align="center">Perfiles</h4></th></tr><tr><th>Photo</th><th>Clave</th><th>Nombre</th><th>Modificar Imagen</th></tr></table>';
        $('#pla').html(tabla);
 
    // var src='/img/'
@@ -236,7 +237,16 @@ function chargenew() {
      
     event.preventDefault();
     //$('#mytablita').remove();
-    document.getElementById('pic').innerHTML='';
+    document.getElementById('content').innerHTML=
+    "<template class='row col-md-3 col-lg-12' id='usercard'>"+
+    "<div class='col-md-3' id='user_card'>"+
+        "<h3  id='card_id' align='right'></h3>"+
+        "<img id='user_img' src='' alt='Avatar' style='width:100%'>"+
+        "<div id='card_container'>"+
+            "<h4 id='card_user' align='center'><b></b></h4>"+ 
+        "</div>"+
+    "</div>"+
+    "</template>";
 
      //  var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive table-hover" align="center" id="mytablita"><tr><th><h4 align="center">Perfiles</h4></th></tr><tr><th>Photo</th><th>Clave</th><th>Nombre</th><th>Modificar Imagen</th></tr></table>';
       // $('#pic').html(tabla);
@@ -253,12 +263,127 @@ function chargenew() {
                $( '#' + i ).append( document.createTextNode( ' - ' + val ));
                //console.log(val);
                if(val["photo"]==null){
-                var nuevaFila = "<div class='col-lg-4'><h2>No hay Imagen Disponible "+ val["user_id"] +"  "+ val["username"] + "</h2></div>";
-                $('#pic').append(nuevaFila);
+                var card = document.getElementsByTagName("template")[0];
+                var user_id = card.content.querySelector('#card_id').textContent = val["user_id"];
+                var username = card.content.querySelector('#card_user').textContent = val["username"];
+                var user_photo = card.content.querySelector('#user_img').src="/img/default.jpg";
+                var clone = document.importNode(card.content, true);
+                document.getElementById("content").appendChild(clone);
+
+           
                }else{
-                var nuevaFila = "<div class='col-lg-4'> <h2>"+ val["user_id"] +" "+ val["username"] +  "</h2> <img src=/img/"+ val["photo"] + " class='img-thumbnail'/></div>";
-                $('#pic').append(nuevaFila);
+
+                var card = document.getElementsByTagName("template")[0];
+					var user_id = card.content.querySelector('#card_id').textContent = val["user_id"];
+					var username = card.content.querySelector('#card_user').textContent = val["username"];
+					var user_photo = card.content.querySelector('#user_img').src="/img/"+val["photo"];
+					var clone = document.importNode(card.content, true);
+					document.getElementById("content").appendChild(clone);
+                
+            
                }
+               
+               
+              // document.getElementById("mytable").appendChild(node);
+             });
+
+           //$('#userData').html(data);
+       },
+       error: function(data) {}
+   });
+
+}
+
+
+function orderer() {
+     
+    event.preventDefault();
+    //$('#mytablita').remove();
+
+     //  var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive table-hover" align="center" id="mytablita"><tr><th><h4 align="center">Perfiles</h4></th></tr><tr><th>Photo</th><th>Clave</th><th>Nombre</th><th>Modificar Imagen</th></tr></table>';
+    $('#pic').html('');
+
+    $.ajax({
+       url:'/charge',
+       method: 'POST',
+       success: function(data) {
+           var con =0;
+          
+          
+           $.each(data.data, function( i, val ) {
+               $( '#' + i ).append( document.createTextNode( ' - ' + val ));
+               //console.log(val);
+               
+               if(con == 4){
+                if(val["photo"]==null){
+
+
+
+                    var line= "<div class='clearfix visible-md-block clearfix visible-lg-block'></div>"+
+                      "<div class='col-md-3 col-lg-3'>"+
+                      "<h1 align='right'>"+ val["user_id"]+"</h1>"+
+                          "<div align='center'><img src='/img/default.jpg' alt='Avatar'  class='img-thumbnail'></div>"+
+                          "<h2 align='center'>"+val["username"]+"</h2>"+
+                        "</div>";
+      
+      
+      
+      
+                    //  var nuevaFila = "<tr><td>No hay Imagen Disponible</td><td>"+ val["user_id"] +"</td><td>"+ val["username"] + "</td><td>Nueva Imagen <form method='POST' action='/updateimg' enctype='multipart/form-data'><input type='file' id='newpicture' name='newpicture'/><input type='hidden' id='id_picture' name='id_picture' value='"+val["user_id"]+"'><input type='submit' class='btn btn-info' value='Actualizar'/></form></td></tr>";
+                      $('#pic').append(line);
+
+                      
+      
+                     }else{
+      
+                          
+                    var line= "<div class='clearfix visible-md-block clearfix visible-lg-block'></div>"+
+                    "<div class='col-md-3 col-lg-3'>"+
+                    "<h1 align='right'>"+ val["user_id"]+"</h1>"+
+                    "<div align='center'><img src='/img/"+ val["photo"] +  "'alt='Avatar'  class='img-thumbnail'></div>"+
+                    "<h2 align='center'>"+val["username"]+"</h2>"+
+                    "</div>";
+      
+                      var nuevaFila = "<tr><td> <img src=/img/"+ val["photo"] + " class='img-thumbnail'/></td><td>"+ val["user_id"] +"</td><td>"+ val["username"] +  "</td><td>Nueva Imagen <form method='POST' action='/updateimg' enctype='multipart/form-data'><input type='file' id='newpicture' name='newpicture'/><input type='hidden' id='id_picture' name='id_picture' value='"+val["user_id"]+"'><input type='submit' class='btn btn-info' value='Actualizar'/></form></td></tr>";
+                      $('#pic').append(line);
+                  
+                     }
+                     
+                     con = 0;
+               }
+               else{
+                if(val["photo"]==null){
+
+
+
+                    var line= "<div class='col-md-3 col-lg-3'>"+
+                    "<h1 align='right'>"+ val["user_id"]+"</h1>"+
+                    "<div align='center'><img src='/img/default.jpg' alt='Avatar'  class='img-thumbnail'></div>"+      
+                        "<h2 align='center'>"+val["username"]+"</h2>"+
+                    "</div>";
+      
+      
+      
+                    //  var nuevaFila = "<tr><td>No hay Imagen Disponible</td><td>"+ val["user_id"] +"</td><td>"+ val["username"] + "</td><td>Nueva Imagen <form method='POST' action='/updateimg' enctype='multipart/form-data'><input type='file' id='newpicture' name='newpicture'/><input type='hidden' id='id_picture' name='id_picture' value='"+val["user_id"]+"'><input type='submit' class='btn btn-info' value='Actualizar'/></form></td></tr>";
+                      $('#pic').append(line);
+      
+                     }else{
+      
+                          
+                    var line=  "<div class='col-md-3 col-lg-3'>"+
+                    "<h1 align='right'>"+ val["user_id"]+"</h1>"+
+                    "<div align='center'><img src='/img/"+ val["photo"] +  "'alt='Avatar'  class='img-thumbnail'></div>"+
+                    "<h2 align='center'>"+val["username"]+"</h2>"+
+                    "</div>";
+      
+                      var nuevaFila = "<tr><td> <img src=/img/"+ val["photo"] + " class='img-thumbnail'/></td><td>"+ val["user_id"] +"</td><td>"+ val["username"] +  "</td><td>Nueva Imagen <form method='POST' action='/updateimg' enctype='multipart/form-data'><input type='file' id='newpicture' name='newpicture'/><input type='hidden' id='id_picture' name='id_picture' value='"+val["user_id"]+"'><input type='submit' class='btn btn-info' value='Actualizar'/></form></td></tr>";
+                      $('#pic').append(line);
+                  
+                     }
+                     
+               }
+               con ++;
+               
                
                
               // document.getElementById("mytable").appendChild(node);

@@ -9,10 +9,8 @@
 </head>
 <body>
 @yield('sidevision')
-	
-		
-	
-	
+
+
 
 
 </body>

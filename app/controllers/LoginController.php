@@ -200,7 +200,7 @@ class LoginController extends BaseController {
 
            
         $input = Input::all();
-
+        
          $validator = $user->validatetwo($input);
 
 
@@ -224,6 +224,8 @@ class LoginController extends BaseController {
                 $user-> save();
 
                 $file->move("public/img",$file->getClientOriginalName());
+
+              
 
                 return Redirect::to('/seeprofile');
 
