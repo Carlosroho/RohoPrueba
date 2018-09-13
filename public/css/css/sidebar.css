@@ -141,7 +141,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1329cd', end
 
     
 }
-h1,h2,h3,h4,p,td,tr,th{
+h1,h2,h3,h4,p,td,tr,th,label{
     color: white;
 }
 .btn{
@@ -158,4 +158,32 @@ background: -ms-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgb
 background: radial-gradient(ellipse at center, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1329cd', endColorstr='#015dd5', GradientType=1 );
     
+}
+
+.modal-content{
+    
+    background: rgba(19,41,205,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(19,41,205,1)), color-stop(100%, rgba(1,93,213,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1329cd', endColorstr='#015dd5', GradientType=1 );
+    
+}
+.modal-body td{
+    background: rgba(19,41,205,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(19,41,205,1)), color-stop(100%, rgba(1,93,213,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(19,41,205,1) 0%, rgba(1,93,213,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1329cd', endColorstr='#015dd5', GradientType=1 );
+  
+}
+
+.modal-body td input{
+color:black;
 }

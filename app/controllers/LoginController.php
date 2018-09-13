@@ -26,7 +26,7 @@ class LoginController extends BaseController {
             $user = User::where ('username', $username)-> where ('password', $password)->get();
     
             if(count($user)>0){
-                return array('error'=> false,'message' => 'Usuario Encontrado', 'data'=>'');
+                return array('error'=> false,'message' => 'Usuario Encontrado', 'data'=> $user);
             }
             else{
                 return array('error'=> true,'message' => 'Usuario No Registrado', 'data'=>'');
@@ -295,13 +295,36 @@ class LoginController extends BaseController {
 
             $file->move("public/img",$file->getClientOriginalName());
            
-                    return var_dump($file);
-               //  return Redirect::to('/seeprofile');
+               //     return var_dump($file);
+                 return Redirect::to('/seeprofile');
         }
 
 
         catch(Exception $e){
             return array('error'=> true,'message' => 'Hubo un error al cambiar la imagen los datos del usuario', 'data'=>$e->getMessage());
+       }
+    }
+
+
+    public function lemos(){
+        try
+        {
+
+       
+            $input = Input::all();
+          
+            
+           // $file = Input::file("lefile");
+
+            
+            
+         
+                 return var_dump($input);
+        }
+
+
+        catch(Exception $e){
+            return array('error'=> true,'message' => 'Hubo un error subir archivo', 'data'=>$e->getMessage());
        }
     }
 

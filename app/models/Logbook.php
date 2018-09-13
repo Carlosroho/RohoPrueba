@@ -25,4 +25,21 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = true;
 
+
+	public function validate($input){
+
+
+		
+		$rules = array(
+			'name' => 'required');
+
+		$messages = array('required'=>'El :attribute es obligatorio');
+
+		$validator = Validator::make($input,$rules,$messages);
+
+		return $validator;
+
+
+	}
+
 }

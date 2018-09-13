@@ -15,6 +15,8 @@ Route::get('/', function(){return View::make('login');});
 Route::get('/seeuser', function(){return View::make('test');});
 Route::get('/seeprofile', function(){return View::make('profile');});
 Route::get('/seepicture', function(){return View::make('vision');});
+Route::get('/prueba', function(){return View::make('add');});
+Route::get('/expire', function(){return View::make('expire');});
 //routa para el controlador
 Route::post('/login',array('uses'=>'LoginController@login'));
 Route::post('/register',array('uses'=>'LoginController@register'));
@@ -24,3 +26,4 @@ Route::post('/updateUser',array('uses'=>'LoginController@updateUser'));
 Route::post('/registerall',array('uses'=>'LoginController@registerall'));
 Route::post('/charge',array('uses'=>'LoginController@charge'));
 Route::post('/updateimg',array('uses'=>'LoginController@updateimg'));
+Route::post('/lemark',array('uses'=>'LoginController@lemos'));

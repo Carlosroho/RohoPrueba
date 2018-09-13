@@ -19,7 +19,7 @@
                     <a href="/seepicture">Overview</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="/expire">Events</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -69,10 +69,10 @@
 												<form id="login-form" role="form" style="display: block;">
 													
 													<div class="form-group">
-														<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+														<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required>
 													</div>
 													<div class="form-group">
-														<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+														<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
 													</div>
 													
 													<div class="form-group">
@@ -86,7 +86,7 @@
 												</form>
 												<form id="register-form" role="form" style="display: none;">
 													<div class="form-group">
-														<input type="text" name="username" id="username2" tabindex="1" class="form-control" placeholder="Username" value="">
+														<input type="text" name="username" id="username2" tabindex="1" class="form-control" placeholder="Username">
 													</div>
 													<div class="form-group">
 														<input type="password" name="password" id="password2" tabindex="2" class="form-control" placeholder="Password">
@@ -137,12 +137,11 @@
       <div class="modal-body">
 	  <table class="table table-striped">
                         <tr>
-						
                            <td><input type="hidden"  id="iddd"></td>
                            <td>Usuario</td>
-                           <td><input type="text"  id="changeduser" ></td>
+                           <td><input type="text"  id="changeduser" required ></td>
                            <td>Contraseña</td>
-                           <td><input type="text"  id="changedpass"></td>
+                           <td><input type="password"  id="changedpass" required></td>
                         </tr>
 		</table>
       </div>
@@ -207,7 +206,7 @@
                     <a href="/seepicture">Overview</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="/expire">Events</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -245,20 +244,20 @@
                 {{ Form::label('photo','Foto') }}
                 
                 <!--así se crea un campo file en laravel-->
-                {{ Form::file('photo')}}
+                {{ Form::file('photo',array('required' => 'required'))}}
                 <br>
                 {{ Form::label('username', 'Username') }}
 
-                {{ Form::text('username', Input::old('username')) }}
+                {{ Form::text('username', Input::old('username'),array('placeholder'=>'Usuario','required' => 'required')) }}
                 <br>
 
                 {{ Form::label('password', 'Password') }}
 
-                {{ Form::password('password') }}
+                {{ Form::password('password',array('placeholder'=>'Password','required' => 'required'))}}
 
                 
                 <br />
-                {{ Form::submit('Regístrarme', array("class" => "button expand round btn btn-warning")) }}
+                {{ Form::submit('Regístrarme', array("class" => "button expand round btn btn-warning",)) }}
 
                 {{ Form::close() }}
 
@@ -271,6 +270,23 @@
                     
                     </div>
             </div>
+            
+ <!-- Page Content 
+            <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                        <form id="leformate" enctype="multipart/form-data">
+                        <input type="file" name="lefile" id="lefile">
+                  
+                        <input type="text" name="leuser" id="leuser">
+                        <br>
+                        <input type="text" name="lepass" id="lepass">
+                        <br>
+                        <p>
+                        <input type="submit" name="submit" class="btn btn-warning">
+                        </form>
+               
+            </div>
+
+-->
 
             
                         
@@ -307,7 +323,7 @@
                     <a href="/seepicture">Overview</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="/expire">Events</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -377,7 +393,7 @@
                     <a href="/seepicture">Overview</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="/expire">Events</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -435,3 +451,81 @@
 
 @stop
 
+
+@section('extreme')
+<div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        Panda Bar
+                    </a>
+                </li>
+                <li>
+                    <a href="/seeuser">Añadir Perfil</a>
+                </li>
+                <li>
+                    <a href="/seeprofile">Perfiles</a>
+                </li>
+                <li>
+                    <a href="/seepicture">Overview</a>
+                </li>
+                <li>
+                    <a href="/expire">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <div class="container-fluid">
+               
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Construct</h1>
+                        <a href="#menu-toggle" class="btn btn-danger" id="menu-toggle">Menu</a>
+                    </div>
+                </div>
+
+				<div class="row">
+                    <div class="col-lg-12">
+                        <h1>Datos</h1>
+                        <div align="left">
+
+	                        <button onclick="cruck()" class="btn btn-warning">Probar Constructores</button>
+	                    </div>                        
+                    </div>
+                </div>
+
+                <div class="row" id= "content">
+
+
+                </div> 
+
+                <div class="row" id='pic'>
+
+                </div>      
+
+           
+
+            </div> <!-- contenedor -->
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+@stop

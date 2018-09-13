@@ -42,22 +42,6 @@ function check() {
 function add() {
     event.preventDefault();
 
-  
-    
-    
-  /*  var img = document.getElementById('photo');
-  
-  var uploadFile = img.files[0];
-   if (!(/\.(jpg|png|gif)$/i).test(uploadFile.name) ) {
-        $.jGrowl('este archivo no es compatible');
-       
-    }else{
-
-        $.jGrowl('imagen correcta');
-    }
-
-    */
-    
 
      $.ajax({
          url:'/register',
@@ -71,6 +55,8 @@ function add() {
           
            
             $.jGrowl(data.message);
+                
+                
            
          },
          error: function(data) {}
@@ -81,7 +67,7 @@ function add() {
      event.preventDefault();
      $('#mytable').remove();
 
-        var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive " align="center" id="mytable"><tr><th><h4 align="center">Tabla De Usuarios</h4></th></tr><tr><th>Perfil</th><th>Id</th><th>Usuario</th><th>Contraseña</th><th>Acción</th></tr></table>';
+        var tabla = '<table class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive " align="center" id="mytable"><tr><th><h4 align="center">Tabla De Usuarios</h4></th></tr><tr><th>Id</th><th>Usuario</th><th>Contraseña</th><th>Acción</th></tr></table>';
         $('#place').html(tabla);
      
      //$('#mytable').DataTable().clear();
@@ -94,7 +80,7 @@ function add() {
                 $( '#' + i ).append( document.createTextNode( ' - ' + val ) );
                 //console.log(val);
                 
-                var nuevaFila = "<tr><td> <img src=/img/"+ val["photo"] + " class='img-thumbnail'/></td><td>" + val["user_id"] + "</td><td>"+ val["username"] +"</td><td>"+ val["password"] + "</td><td><input type='button' onclick='update(" + val["user_id"] + ")' class='btn btn-success' value='actualizar'/><input type='button' onclick='remove("+ val["user_id"] +")' class='btn btn-danger' value='Borrar'/></td></tr>"
+                var nuevaFila = "<tr><td>"  + val["user_id"] + "</td><td>"+ val["username"] +"</td><td>"+ val["password"] + "</td><td><input type='button' onclick='update(" + val["user_id"] + ")' class='btn btn-success' value='actualizar'/><input type='button' onclick='remove("+ val["user_id"] +")' class='btn btn-danger' value='Borrar'/></td></tr>"
                 $('#mytable').append(nuevaFila);
                // document.getElementById("mytable").appendChild(node);
               });
@@ -176,6 +162,7 @@ $(function(){$("input[name='photo']").on("change", function(){
     var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
     if(!allowedExtensions.exec(filePath)){
             $.jGrowl('Solo se permiten archivos .jpeg/.jpg/.png/.gif');
+            fileInput.value = '';
            
         
     }else{
@@ -191,6 +178,8 @@ $(function(){$("input[name='photo']").on("change", function(){
 
     });
  });
+
+
  
 
  function charge() {
@@ -395,3 +384,41 @@ function orderer() {
    });
 
 }
+
+$(document).ready(function () {
+ 
+    //sobreescribimos el metodo submit para que envie la solicitud por ajax
+    $("#leformate").submit(function (e) {
+
+        //esto evita que se haga la petición común, es decir evita que se refresque la pagina
+        e.preventDefault();
+
+        //ruta la cual recibira nuestro archivo
+    
+          
+        //FormData es necesario para el envio de archivo, 
+        //y de la siguiente manera capturamos todos los elementos del formulario
+        var parametros=new FormData($(this)[0])
+        
+        //realizamos la petición ajax con la función de jquery
+        $.ajax({
+            url:'/lemark' ,
+            type: "POST",
+            data: parametros,
+            contentType: false, //importante enviar este parametro en false
+            processData: false, //importante enviar este parametro en false
+            success: function (data) {
+
+                
+                   
+               alert(data);
+            },
+            error: function (r) {
+                
+                alert("Error del servidor");
+            }
+        });
+
+    })
+
+})
