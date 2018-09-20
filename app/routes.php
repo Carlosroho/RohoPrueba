@@ -17,6 +17,7 @@ Route::get('/seeprofile', function(){return View::make('profile');});
 Route::get('/seepicture', function(){return View::make('vision');});
 Route::get('/prueba', function(){return View::make('add');});
 Route::get('/expire', function(){return View::make('expire');});
+Route::get('/bita', function(){return View::make('bita');});
 //routa para el controlador
 Route::post('/login',array('uses'=>'LoginController@login'));
 Route::post('/register',array('uses'=>'LoginController@register'));
@@ -27,3 +28,10 @@ Route::post('/registerall',array('uses'=>'LoginController@registerall'));
 Route::post('/charge',array('uses'=>'LoginController@charge'));
 Route::post('/updateimg',array('uses'=>'LoginController@updateimg'));
 Route::post('/lemark',array('uses'=>'LoginController@lemos'));
+Route::post('/addGym',array('uses'=>'LogbookController@register'));
+Route::post('/addBlock',array('uses'=>'LogbookController@error'));
+Route::post('/logdev',array('uses'=>'LogbookController@send'));
+Route::post('/adjust',array('uses'=>'LogbookController@excharge'));
+
+
+

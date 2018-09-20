@@ -29,6 +29,8 @@ function check() {
         success: function(data) {
             if(data.error){
                 $.jGrowl(data.message);
+                //aqui va el error al ingresar
+
             }
             else{
                 $.jGrowl(data.message);
@@ -37,6 +39,22 @@ function check() {
         error: function(data) {}
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function add() {

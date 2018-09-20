@@ -22,7 +22,7 @@
                     <a href="/expire">Events</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/bita">About</a>
                 </li>
                 <li>
                     <a href="#">Services</a>
@@ -209,7 +209,7 @@
                     <a href="/expire">Events</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/bita">About</a>
                 </li>
                 <li>
                     <a href="#">Services</a>
@@ -326,7 +326,7 @@
                     <a href="/expire">Events</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/bita">About</a>
                 </li>
                 <li>
                     <a href="#">Services</a>
@@ -396,7 +396,7 @@
                     <a href="/expire">Events</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/bita">About</a>
                 </li>
                 <li>
                     <a href="#">Services</a>
@@ -476,7 +476,7 @@
                     <a href="/expire">Events</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/bita">About</a>
                 </li>
                 <li>
                     <a href="#">Services</a>
@@ -503,21 +503,48 @@
 				<div class="row">
                     <div class="col-lg-12">
                         <h1>Datos</h1>
-                        <div align="left">
+                        <div class="col-lg-3" align="left">
 
-	                        <button onclick="cruck()" class="btn btn-warning">Probar Constructores</button>
+                                <input type="text" required  placeholder="Tipo"  id="ttt" >
+                                <input type="text" required  placeholder="Nombre Del Gym"  id="gym" >
+                                <br>
+                                <br>
+	                        <button onclick="cruck()" class="btn btn-warning">Registrar Gymnasio</button>
 	                    </div>                        
                     </div>
                 </div>
+                <br>
+                <br>
+                
 
-                <div class="row" id= "content">
+                <div align="left" class="row" id= "content">
 
-
+                    <button onclick="error()" class="btn btn-warning">Revisar User</button>
                 </div> 
 
-                <div class="row" id='pic'>
+     
+                
+                <br>
+                <br>
+                <br>
 
-                </div>      
+
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            
+                    <div align="center" class="form">
+                        <form>
+                            <p>Usuario</p>
+                            <input type="text" name="usua" id="usua" required>
+                            <p>Contraseña</p>
+                            <input type="password" name="pas" id="pas"  required>
+                            <br>
+                            <br>
+                            <button onclick="logdev()" class="btn btn-warning">Login</button>
+                        </form> 
+        
+                    </div>   
+
+             
 
            
 
@@ -528,4 +555,110 @@
 
     </div>
 
+@stop
+
+
+
+@section('bitaco')
+<div id="wrapper" class="toggled">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="/">
+                    Panda Bar
+                </a>
+            </li>
+            <li>
+                <a href="/seeuser">Añadir Perfil</a>
+            </li>
+            <li>
+                <a href="/seeprofile">Perfiles</a>
+            </li>
+            <li>
+                <a href="/seepicture">Overview</a>
+            </li>
+            <li>
+                <a href="/expire">Events</a>
+            </li>
+            <li>
+                <a href="/bita">About</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <div class="container-fluid">
+           
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1></h1>
+                    <a href="#menu-toggle" class="btn btn-danger" id="menu-toggle">Menu</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Bitacora</h1>
+                    <div class="col-lg-3" align="left">
+
+                        <form>
+                                <label for="usubit">Usuario</label>
+                                <input type="text"  name="usubit" placeholder="Usuario"  id="usubit" >
+                                <br>
+                                <label for="stday">Fecha Inicio</label>
+                                <input type="date" name="stday" id="stday" required><br>
+                                <label for="enday">Fecha Final</label>
+                                <input type="date" name="enday" id="enday">
+    
+                            <button onclick="loadBit()" class="btn btn-warning">Revisar Errores</button>
+
+
+
+                        </form>
+
+                 
+                    </div>                        
+                </div>
+            </div>
+
+            <div class="row">
+                <div class= "col-lg-12">
+
+                    <div id="tablebit" align="center">
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            
+
+
+
+
+         
+
+       
+
+        </div> <!-- contenedor -->
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
 @stop
