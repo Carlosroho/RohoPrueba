@@ -15,6 +15,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'user';
+	protected $primaryKey = 'user_id';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -25,52 +26,36 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = true;
 
-
-
-
-
-
-
-	public function validate($input){
-
-
-		
-		$rules = array(
+	public function validate($input) {
+		$rules = array
+		(
 			'username' => 'required|unique:user,username|min:4',
-			'password' => 'required|min:4');
-
-		$messages = array('required'=>'El :attribute es obligatorio',
-		'min'=>'El :attribute debe contener almenos 4 caracteres',
-		'unique'=>'El :attribute ya existe'
+			'password' => 'required|min:4'
 		);
-
+		$messages = array
+		(
+			'required'=>'El :attribute es obligatorio',
+			'min'=>'El :attribute debe contener almenos 4 caracteres',
+			'unique'=>'El :attribute ya existe'
+		);
 		$validator = Validator::make($input,$rules,$messages);
-
 		return $validator;
-
-
 	}
 
-	public function validatetwo($input){
-
-
-		
-		$rules = array(
+	public function validatetwo($input) {
+		$rules = array
+		(
 			'username' => 'required|unique:user,username|min:4',
 			'password' => 'required|min:4',
 			'photo' => 'required|unique:user,photo|image|max:1024'
 		);
-
-		$messages = array('required'=>'El :attribute es obligatorio',
-		'min'=>'El :attribute debe contener almenos 4 caracteres',
-		'unique'=>'El :attribute ya existe'
+		$messages = array
+		(
+			'required'=>'El :attribute es obligatorio',
+			'min'=>'El :attribute debe contener almenos 4 caracteres',
+			'unique'=>'El :attribute ya existe'
 		);
-
 		$validator = Validator::make($input,$rules,$messages);
-
 		return $validator;
-
-
 	}
-
 }

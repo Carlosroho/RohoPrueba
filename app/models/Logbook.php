@@ -15,6 +15,7 @@ class Logbook extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'logbook';
+	protected $primaryKey = 'history_id';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -35,9 +36,10 @@ class Logbook extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	
 
-	public function validate(){
+	public function validate() {
 
-		$input = array (
+		$input = array 
+		(
 			'user_id' => $this->user_id ,
 			'gym_id' => $this->gym_id ,
 			'logbook_type_id' => $this->logbook_type_id ,
@@ -46,7 +48,8 @@ class Logbook extends Eloquent implements UserInterface, RemindableInterface {
 			'success' => $this->success
 		);
 		
-		$rules = array(
+		$rules = array
+		(
 			'user_id' => 'required|exists:user,user_id',
 			'gym_id' => 'required||exists:gym,gym_id',
 			'logbook_type_id' => 'required||exists:logbooktype,logbook_id',
@@ -55,18 +58,29 @@ class Logbook extends Eloquent implements UserInterface, RemindableInterface {
 			'success' => 'required'
 		);
 
-		$messages = array('required'=>'El :attribute es obligatorio',
-		'exists'=>'El :attribute no se encuentra registrado'
+		$messages = array
+		(
+			'required'=>'El :attribute es obligatorio',
+			'exists'=>'El :attribute no se encuentra registrado'
 		);
 
 		$validator = Validator::make($input,$rules,$messages);
-
 		return $validator;
 
 
 	}
 	public function getData(){
-		return 'Gym:'.$this->gym_id.' User id: '.$this->user_id;
+		return 
+		'Gym:'.
+		$this->gym_id.
+		' User id: '.
+		$this->user_id.
+		' Success'.
+		$this->success.
+		' where'.
+		$this->where.
+		' action'.
+		$this->action;
 	}
 
 }

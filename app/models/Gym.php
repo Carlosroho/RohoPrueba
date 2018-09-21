@@ -15,6 +15,7 @@ class Gym extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'gym';
+	protected $primaryKey = 'gym_id';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -25,41 +26,23 @@ class Gym extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = true;
 
-		
-	
+	public function validate() {
 
-	public function validate(){
-
-		try{
-
+		try
+		{
 			$infos = $this->name;
-
 			$info=array("name"=>$this->name);
+			$rules = array(
+			'name' => 'required');
 
+			$messages = array('required'=>'El :attribute es obligatorio');
+			$validator = Validator::make($info,$rules,$messages);
 
-		
-		$rules = array(
-				'name' => 'required');
-
-		$messages = array('required'=>'El :attribute es obligatorio');
-
-		$validator = Validator::make($info,$rules,$messages);
-
-		return $validator;
-
-
+			return $validator;
 		}
-		catch(Exception $e){
-				return array('error'=> true,'message' => 'Error En la Consulta', 'data'=>$e->getMessage());
+		catch(Exception $e)
+		{
+			return array('error'=> true,'message' => 'Error En la Consulta', 'data'=>$e->getMessage());
    		}
-
-
-
 	}
-
-
-	
-	
-	
-
 }
